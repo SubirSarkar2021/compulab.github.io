@@ -489,7 +489,7 @@ The element 98 is in the [78.0, 45.0, 98.0, 23.0, 55.0] at the index position 2
 \pi = 4\left( \frac{\text{Number of points within the circle}}{\text{Total number of points within the square}}\right)
 \end{align}</span></p>
 <p>Imagine that the square extends from -1 to 1 both along X and Y axes and center of the circle coincides with the origin of the coordinate axes. A point is represented by a x and y coordinates. So, first of all generate <span class="math notranslate nohighlight">\((x,y)\)</span> corodinates within a range from -1 to 1 randomly through the following code.</p>
-<div align="center"><p><img alt="7a60864d1bbe49d5bd86be8554807953" class="no-scaled-link" src="_images/pi.png" style="width: 200px; height: 200px;" /></p>
+<div align="center"><p><img alt="8cd63f07e4854d0dba621543cd34ed09" class="no-scaled-link" src="_images/pi.png" style="width: 200px; height: 200px;" /></p>
 </div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
@@ -987,13 +987,205 @@ x = \sqrt{2}\sin x
 <img alt="_images/sem1(1)_37_0.png" src="_images/sem1(1)_37_0.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="Ordinary-Differential-Equations">
+<h3>Ordinary Differential Equations<a class="headerlink" href="#Ordinary-Differential-Equations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Problem---1">
+<h4>Problem - 1<a class="headerlink" href="#Problem---1" title="Permalink to this headline">¶</a></h4>
+<p>Solve the coupled first order differential equations <span class="math">\begin{align}
+&\frac{dx}{dt} = y + x - \frac{x^3}{3} \\
+&\frac{dy}{dt} = -x
+\end{align}</span></p>
+<p>for four initial conditions <span class="math notranslate nohighlight">\(x(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = -1, -2, -3, -4\)</span>. Plot x vs y for each of the four initial conditions on the same screen for <span class="math notranslate nohighlight">\(0 \le t \le 15\)</span>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-1, -2, -3, -4]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">y0</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">x0</span>
+    <span class="n">z0</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">z</span>
+        <span class="n">dx_dt</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span>
+        <span class="n">dy_dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+        <span class="n">dz_dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dx_dt</span><span class="p">,</span> <span class="n">dy_dt</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">dz_dt</span>
+
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y0</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem1(1)_41_0.png" src="_images/sem1(1)_41_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Problem---2">
+<h4>Problem - 2<a class="headerlink" href="#Problem---2" title="Permalink to this headline">¶</a></h4>
+<p>Solve the coupled first order differential equations <span class="math">\begin{align}
+&\frac{dx}{dt} = y + x - \frac{x^3}{3} \\
+&\frac{dy}{dt} = -x
+\end{align}</span></p>
+<p>for four initial conditions <span class="math notranslate nohighlight">\(x(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = -1, -2, -3, -4\)</span>. Plot x vs y for each of the four initial conditions on the same screen for <span class="math notranslate nohighlight">\(0 \le t \le 15\)</span>.</p>
+<p>The ordinary differential equation describing the motion of a pendulum is</p>
+<div class="math notranslate nohighlight">
+\[\theta^{\prime\prime} = -\sin \theta\]</div>
+<p>The pendulum is released from rest at an angular displacement <span class="math notranslate nohighlight">\(\alpha\)</span>, i.e. <span class="math notranslate nohighlight">\(\theta(0) = \alpha\)</span>, <span class="math notranslate nohighlight">\(\theta^{\prime}(0)=0\)</span>. Use the RK4 method to solve the equation for <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.1, 0.5 and 1.0 and plot <span class="math notranslate nohighlight">\(\theta\)</span> as a function of time in the range <span class="math notranslate nohighlight">\(0 \le t \le 8\pi\)</span>. Also, plot the analytic solution valid in the small <span class="math notranslate nohighlight">\(\theta\)</span> (<span class="math notranslate nohighlight">\(\sin \theta \approx \theta\)</span>).</p>
+<p>The given equation is a second order differential equation. This, we have to break up into two first order differential equations. Consider, <span class="math">\begin{align}
+&\frac{d\theta}{dt} = \omega \\
+&\frac{d\omega}{dt} = -\sin \theta
+\end{align}</span> So, we can represent these two equations by a single equation such that <span class="math">\begin{align}
+\frac{d}{dt}
+\begin{bmatrix}
+\theta \\
+\omega
+\end{bmatrix}=
+\begin{bmatrix}
+\omega \\
+-\sin \theta
+\end{bmatrix}
+\end{align}</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">dt</span>   <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">2</span><span class="p">])</span>       <span class="c1"># to store the values</span>
+                                <span class="c1"># of theta and omega</span>
+
+
+<span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">theta</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">z</span>
+    <span class="n">dtheta_dt</span> <span class="o">=</span> <span class="n">omega</span>
+    <span class="n">domega_dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">dz_dt</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dtheta_dt</span><span class="p">,</span> <span class="n">domega_dt</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">dz_dt</span>
+
+<span class="k">def</span> <span class="nf">rk4</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">k1</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">k2</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">k3</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">z</span>  <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span> <span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span><span class="p">)</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">dt</span>
+    <span class="k">return</span> <span class="n">z</span>
+
+<span class="k">for</span> <span class="n">theta0</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
+    <span class="n">omega0</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta0</span><span class="p">,</span> <span class="n">omega0</span><span class="p">]</span>   <span class="c1"># initial state of oscillation</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="n">theta</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">z</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_0 = $&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">theta0</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem1(1)_43_0.png" src="_images/sem1(1)_43_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Problem---3">
+<h4>Problem - 3<a class="headerlink" href="#Problem---3" title="Permalink to this headline">¶</a></h4>
+<p>Solve the differential equation: <span class="math">\begin{align}
+x^2\frac{d^2y}{dx^2} - 4x(1+x)\frac{dy}{dx} + 2(1 + x)y = x^3
+\end{align}</span></p>
+<p>with the boundary conditions:</p>
+<p>at <span class="math notranslate nohighlight">\(x = 1\)</span>, <span class="math notranslate nohighlight">\(y = (1/2) e^2\)</span>, <span class="math notranslate nohighlight">\(dy/dx = - (3/2) e^2– 0.5\)</span>, in the range <span class="math notranslate nohighlight">\(1\le x \le 3\)</span>. Plot <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span> against <span class="math notranslate nohighlight">\(x\)</span> in the given range. Both should appear on the same graph.</p>
+<p>Let us break up the given second order differential equation into two first order differential equations - <span class="math">\begin{align}
+&\frac{dy}{dx} = z \\
+&\frac{dz}{dx} = \frac{4(1+x)}{x}z - \frac{2(1+x)}{x^2}y +x
+\end{align}</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">z0</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">u0</span> <span class="o">=</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">z0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">u</span>
+    <span class="n">dy_dx</span> <span class="o">=</span> <span class="n">z</span>
+    <span class="n">dz_dx</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">z</span><span class="o">/</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span>
+    <span class="n">du_dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dy_dx</span><span class="p">,</span> <span class="n">dz_dx</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">du_dx</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">frac</span><span class="si">{dy}{dx}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$ and $</span><span class="se">\\</span><span class="s2">frac</span><span class="si">{dy}{dx}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem1(1)_45_0.png" src="_images/sem1(1)_45_0.png" />
 </div>
 </div>
 </div>
@@ -1036,6 +1228,7 @@ x = \sqrt{2}\sin x
 <li class="toctree-l3"><a class="reference internal" href="#Root-finding---Bisection-method">Root finding - Bisection method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Root-finding---Newton-Raphson-method">Root finding - Newton-Raphson method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Practical-Problems">Practical Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Ordinary-Differential-Equations">Ordinary Differential Equations</a></li>
 </ul>
 </li>
 </ul>
