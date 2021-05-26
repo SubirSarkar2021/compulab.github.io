@@ -7,9 +7,10 @@ Welcome to Computer Lab's documentation!
 ========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
    
+   sem1(1)
    sem4(1)
 
 

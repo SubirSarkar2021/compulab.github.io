@@ -17,7 +17,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to Computer Lab’s documentation!" href="index.html" />
+    <link rel="prev" title="Computer Lab - Semester 1" href="sem1%281%29.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -522,22 +522,21 @@ sigma     value of I
 </div>
 <div class="section" id="id1">
 <h2>Fourier Series<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>For a priodic function <span class="math notranslate nohighlight">\(f(x)\)</span>, where <span class="math notranslate nohighlight">\(f(x+2\pi)=f(x)\)</span> :nbsphinx-math:<a href="#id2"><span class="problematic" id="id3">`</span></a>begin{equation}
-begin{aligned}</p>
-<blockquote>
-<div><p>&amp;f(x) = frac{1}{2}a_0 + sum_{n=1}^{infty} a_n cos n x + sum_{n=1}^{infty} b_n sin nx \
-&amp;a_0 = frac{1}{pi}int_{-pi}^{pi}f(x)dx\
-&amp;a_m = frac{1}{pi}int_{-pi}^{pi}f(x)cos mxdx\
-&amp;b_m = frac{1}{pi}int_{-pi}^{pi}f(x)sin mxdx</p>
-</div></blockquote>
-<p>end{aligned}
-end{equation}`</p>
-<p>A square wave function is defined as <span class="math">\begin{equation}
-f(x)=\begin{cases}
+<p>For a priodic function <span class="math notranslate nohighlight">\(f(x)\)</span>, where <span class="math notranslate nohighlight">\(f(x+2\pi)=f(x)\)</span> <span class="math">\begin{equation}
+\begin{aligned}
+&f(x) = \frac{1}{2}a_0 + \sum_{n=1}^{\infty} a_n \cos n x + \sum_{n=1}^{\infty} b_n \sin nx \\
+&a_0 = \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)dx\\
+&a_m = \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos mxdx\\
+&b_m = \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin mxdx
+\end{aligned}
+\end{equation}</span></p>
+<p>A square wave function is defined as <span class="math">\begin{align}
+f(x)=
+\begin{cases}
 -k & -\pi<x<0 \\
 k & 0<x<\pi
 \end{cases}
-\end{equation}</span></p>
+\end{align}</span></p>
 <p>It can be shown that for a square wave function <span class="math">\begin{align}
 &a_0 = 0\\
 &a_n = 0
@@ -628,7 +627,7 @@ nP_n(x) = (2n-1)xP_{n-1}(x) - (n-1)P_{n-2}(x)
 <p>For other values of n, the function is recursively defined, directly from the Bonnet’s recurrence. Thus, P(n, x) returns values of the Legendre polynomial, by recursion method</p>
 <p>Source: <a class="reference external" href="https://www.geeksforgeeks.org/python-legendre-polynomials-using-recursion-relation/">geeksforgeeks</a></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -745,11 +744,12 @@ J_m(x)=\frac{1}{\pi}\int_{0}^{\pi}cos(m\theta-xsin\theta)d\theta
 </div>
 <div class="section" id="Trigonometric-functions">
 <h2>Trigonometric functions<a class="headerlink" href="#Trigonometric-functions" title="Permalink to this headline">¶</a></h2>
-<p>We can write <span class="math notranslate nohighlight">\(\sin \theta\)</span>, if we expand interms of <span class="math notranslate nohighlight">\(\theta\)</span> as <span class="math">\begin{equation}
-\sin \theta = \theta + \frac{\theta^3}{3!} + \frac{\theta^5}{5!} + \cdots
-\end{equation}</span></p>
+<p>We can write <span class="math notranslate nohighlight">\(\sin \theta\)</span>, if we expand interms of <span class="math notranslate nohighlight">\(\theta\)</span> according to Maclaurin series, <span class="math">\begin{align}
+\sin \theta &= \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots\\
+&=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{(2n + 1)!}
+\end{align}</span></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -761,7 +761,7 @@ J_m(x)=\frac{1}{\pi}\int_{0}^{\pi}cos(m\theta-xsin\theta)d\theta
 
 <span class="n">theta_deg</span> <span class="o">=</span> <span class="mi">45</span>
 <span class="n">theta_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">)</span>
-<span class="n">val</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">theta_rad</span><span class="o">/</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">val</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">*</span><span class="n">theta_rad</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sin &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -771,7 +771,7 @@ J_m(x)=\frac{1}{\pi}\int_{0}^{\pi}cos(m\theta-xsin\theta)d\theta
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-sin 45 = 0.923
+sin 45 = 0.707
 </pre></div></div>
 </div>
 </div>
@@ -780,6 +780,8 @@ sin 45 = 0.923
 <p>Integrate <span class="math">\begin{equation}
 \int_{-\infty}^{\infty}\frac{1}{1+x^2}dx
 \end{equation}</span></p>
+<div class="section" id="By-Numerical-approach-using-function-from-SciPy">
+<h3>By Numerical approach using function from SciPy<a class="headerlink" href="#By-Numerical-approach-using-function-from-SciPy" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
 </pre></div>
@@ -802,6 +804,9 @@ sin 45 = 0.923
 (3.141592653589793, 5.155583041103855e-10)
 </pre></div></div>
 </div>
+</div>
+<div class="section" id="By-using-analytical-approach-using-SymPy">
+<h3>By using analytical approach using SymPy<a class="headerlink" href="#By-using-analytical-approach-using-SymPy" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
 </pre></div>
@@ -842,6 +847,7 @@ $\displaystyle 3.14159265358979$</div></div>
 <p>Both the answers agree with each other.</p>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -862,15 +868,26 @@ $\displaystyle 3.14159265358979$</div></div>
 <h3>Navigation</h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sem1%281%29.html">Computer Lab - Semester 1</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Computer Lab - Semester 4</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Solve-Differential-Equation">Solve Differential Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Solve-Differential-Equation">Solve Differential Equation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1(a)-Solve">1(a) Solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1(b)-Solve">1(b) Solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1(c)-Solve">1(c) Solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1(d)-Solve">1(d) Solve</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#Dirac-Delta-Function">Dirac Delta Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Fourier-Series">Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Legendre’s-Polynomial">Legendre’s Polynomial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Bessel’s-function">Bessel’s function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Trigonometric-functions">Trigonometric functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Complex-analysis">Complex analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Complex-analysis">Complex analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#By-Numerical-approach-using-function-from-SciPy">By Numerical approach using function from SciPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#By-using-analytical-approach-using-SymPy">By using analytical approach using SymPy</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -879,7 +896,7 @@ $\displaystyle 3.14159265358979$</div></div>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Computer Lab’s documentation!</a></li>
+      <li>Previous: <a href="sem1%281%29.html" title="previous chapter">Computer Lab - Semester 1</a></li>
   </ul></li>
 </ul>
 </div>
