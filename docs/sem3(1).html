@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solution of Linear system of equations &#8212; Computer Lab  documentation</title>
+    <title>Computer Lab - Semester 3 &#8212; Computer Lab  documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
@@ -35,7 +35,7 @@
           <a href="sem1%281%29.html" title="Computer Lab - Semester 1"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Computer Lab  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Solution of Linear system of equations</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Computer Lab - Semester 3</a></li> 
       </ul>
     </div>  
 
@@ -292,16 +292,18 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Computer-Lab---Semester-3">
+<h1>Computer Lab - Semester 3<a class="headerlink" href="#Computer-Lab---Semester-3" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Solution-of-Linear-system-of-equations">
-<h1>Solution of Linear system of equations<a class="headerlink" href="#Solution-of-Linear-system-of-equations" title="Permalink to this headline">¶</a></h1>
+<h2>Solution of Linear system of equations<a class="headerlink" href="#Solution-of-Linear-system-of-equations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Gauss-elimination-method">
-<h2>Gauss elimination method<a class="headerlink" href="#Gauss-elimination-method" title="Permalink to this headline">¶</a></h2>
+<h3>Gauss elimination method<a class="headerlink" href="#Gauss-elimination-method" title="Permalink to this headline">¶</a></h3>
 <p>It is a method to solve simultaneous linear equations. It is performed in two satges</p>
 <ul class="simple">
 <li><p>Elimination</p></li>
 <li><p>Backsubstitution</p></li>
 </ul>
-<p>Before we develope the algorithim for solving a set of equations by Gauss elimination method, let us try to understand the steps envolved in this method with the help of an example.</p>
+<p>Before we develope the algorithim for solving a set of equations by Gauss elimination method, let us try to understand the steps with the help of an example.</p>
 <p>Suppose the set of equations are represented in matrix form by <span class="math notranslate nohighlight">\(AX=B\)</span>. In the elimination stage, the matrix equation <span class="math notranslate nohighlight">\(AX=B\)</span> is transformed into the form <span class="math notranslate nohighlight">\(UX=B\)</span>, where <span class="math notranslate nohighlight">\(U\)</span> is an upper triangular matrix. Let us try to understand it by taking an example. Consider the following set of equations.</p>
 <p><span class="math">\begin{align}
 &4x_1 - 2x_2 +x_3 = 11 \label{eq1a}\tag{1a}\\
@@ -340,6 +342,213 @@ Eq.(\eqref{eq2c})\leftarrow Eq.(\eqref{eq2c}) - (-0.5) \times Eq.(\eqref{eq2b})
 &x_2=(-10.5 + 1.5x_3)/3= (-10.5 + 1.5(3))/3 = -2 \tag{eq4b} \\
 &x_1 = (11 + 2x_2 - x_3)/4 = (11 + 2(-2) - 3)/4 = 1 \tag{eq4c}
 \end{align}</span></p>
+</div>
+<div class="section" id="Algorithim-of-Gauss-Elimination-Method">
+<h3>Algorithim of Gauss Elimination Method<a class="headerlink" href="#Algorithim-of-Gauss-Elimination-Method" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Elimination-phase">
+<h4>Elimination phase<a class="headerlink" href="#Elimination-phase" title="Permalink to this headline">¶</a></h4>
+<p>Let the <span class="math notranslate nohighlight">\(i\)</span> th row be the typical row below pivot equation that is to be transformed, i.e. we have to eliminate the element <span class="math notranslate nohighlight">\(a_{ik}\)</span> from this row. This we can achieve by multiplying the pivot row by <span class="math notranslate nohighlight">\(\lambda = a_{ik}/a_{kk}\)</span> and then subtracting it from <span class="math notranslate nohighlight">\(i\)</span> th row. The corresponding change in <span class="math notranslate nohighlight">\(i\)</span> th rwo are</p>
+<p><span class="math">\begin{align}
+&a_{ij} \leftarrow a_{ij} - \lambda a_{kj},\hspace{0.5cm}j=k, k+1, \cdots n\\
+&b_i \leftarrow b_i - \lambda b_k \label{4}\tag{4}
+\end{align}</span></p>
+<p>To transform the entire coefficient matrix into upper triangular form, <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(i\)</span> in Eq. (<span class="math">\eqref{4}</span>) have ranges -</p>
+<p><span class="math">\begin{align}
+& k = 1, 2, \cdots n \hspace{2cm} \mbox{(choose the pivot row)}\\
+& i = k+1, k+2, \cdots n \hspace{1cm} \mbox{(choose the rows to be transformed)}
+\end{align}</span></p>
+<p>The code in Python can be scripted as follows -</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">lam</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span><span class="o">/</span><span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">lam</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">lam</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Back-substitution">
+<h4>Back substitution<a class="headerlink" href="#Back-substitution" title="Permalink to this headline">¶</a></h4>
+<p>After elimination phase, the augmented coefficient matrix has the form</p>
+<p><span class="math">\begin{equation}
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+0 & a_{22} & a_{23} & \cdots &  a_{2n} \\
+0 & 0 & a_{33} & \cdots & a_{3n} \\
+\vdots & \vdots & \vdots & \cdots & \vdots \\
+0 & 0 & 0 & \cdots & a_{nn} \\
+\end{pmatrix}
+\end{equation}</span></p>
+<p>The last equation <span class="math notranslate nohighlight">\(a_{nn}x_n=b_n\)</span> is solved first, yielding</p>
+<p><span class="math">\begin{equation}
+x_n=\frac{b_n}{a_{nn}}
+\end{equation}</span></p>
+<p>Consider now the stages of back substitution where <span class="math notranslate nohighlight">\(x_n\)</span>, <span class="math notranslate nohighlight">\(x_{n-1}\)</span>, <span class="math notranslate nohighlight">\(\cdots\)</span>, <span class="math notranslate nohighlight">\(x_{k+1}\)</span> have been evaluated and we are about to determine <span class="math notranslate nohighlight">\(x_k\)</span> from the <span class="math notranslate nohighlight">\(k\)</span> th equation equation</p>
+<p><span class="math">\begin{equation}
+a_{kk}x_k + a_{k, k+1}x_{k+1} + \cdots + a_{kn}x_n = b_k
+\end{equation}</span></p>
+<p>The solution is</p>
+<p><span class="math">\begin{equation}
+x_k = \left( b_k - \sum_{j=k+1}{n}a_{kj}x_{j}\right) \frac{1}{{a_{kk}}}, \hspace{0.5cm} k = n-1, n-2, \cdots 1
+\end{equation}</span></p>
+<p>This can be implemented in Python with the following lines of code -</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">]))</span><span class="o">/</span><span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We now try to solve the set of equations which we started at the beginning.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Matrix construction based on given system of equations</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 4. -2.  1.]
+ [-2.  4. -2.]
+ [ 1. -2.  4.]] [ 11. -16.  17.]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Gauss Elimination Phase - converting to Upper Triangular matrix</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">lam</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span><span class="o">/</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">lam</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">lam</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 4.  -2.   1. ]
+ [ 0.   3.  -1.5]
+ [ 0.   0.   3. ]] [ 11.  -10.5   9. ]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Back substitution phase</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">]))</span><span class="o">/</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+
+<span class="c1"># Printing solutions</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The solution matrix (X) - </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The solution matrix (X) -
+[ 1. -2.  3.]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Gauss-Siedel-Method-(Iterative-method)">
+<h3>Gauss Siedel Method (Iterative method)<a class="headerlink" href="#Gauss-Siedel-Method-(Iterative-method)" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="math notranslate nohighlight">\(n\times n\)</span> linear system of equations can be solved by iterative method. The most fundamental of the iterative method is the <strong>Jacobi method</strong> and slight modified version is the <strong>Gauss Siedel method</strong>.</p>
+<p>For simplicity, consider a <span class="math notranslate nohighlight">\(3\times3\)</span> system</p>
+<p><span class="math">\begin{align}
+a_{11}x_1 + a_{12}x_2 + a_{13} x_3 = b_1 \\
+a_{21}x_1 + a_{22}x_2 + a_{23} x_3 = b_2 \\
+a_{31}x_1 + a_{32}x_2 + a_{33} x_3 = b_3
+\end{align}</span></p>
+<p>When the diagonal elements of the system are non-zero, we can rewrite the above equation as</p>
+<p><span class="math">\begin{align}
+x_1 = \frac{1}{a_{11}}(b_1 - a_{12}x_2 - a_{13}x_3) \\
+x_2 = \frac{1}{a_{22}}(b_2 - a_{21}x_1 - a_{23}x_3) \\
+x_3 = \frac{1}{a_{33}}(b_3 - a_{31}x_1 - a_{32}x_2)
+\end{align}</span></p>
+<p>Let <span class="math notranslate nohighlight">\(x^{(0)}=(x_1^{(0)}, x_2^{(0)}, x_3^{(0)})\)</span> be an initial guess to the true solution of <span class="math notranslate nohighlight">\(x\)</span>, then define an iteration sequence:</p>
+<p><span class="math">\begin{align}
+x_1^{(m+1)} = \frac{1}{a_{11}}(b_1 - a_{12}x_2^{(m)} - a_{13}x_3^{(m)}) \\
+x_2^{(m+1)} = \frac{1}{a_{22}}(b_2 - a_{21}x_1^{(m)} - a_{23}x_3^{(m)}) \\
+x_3^{(m+1)} = \frac{1}{a_{33}}(b_3 - a_{31}x_1^{(m)} - a_{32}x_2^{(m)})
+\end{align}</span></p>
+<p>for <span class="math notranslate nohighlight">\(m=0, 1, 2, \cdots\)</span>. This is called <strong>Jacobi Iteration method</strong>.</p>
+<p>A modified version of Jacobi method is the <strong>Gauss Siedel method</strong> and is given by</p>
+<p><span class="math">\begin{align}
+&x_1^{(m+1)} = \frac{1}{a_{11}}(b_1 - a_{12}x_2^{(m)} - a_{13}x_3^{(m)}) \\
+&x_2^{(m+1)} = \frac{1}{a_{22}}(b_2 - a_{21}x_1^{(m+1)} - a_{23}x_3^{(m)}) \\
+&x_3^{(m+1)} = \frac{1}{a_{33}}(b_3 - a_{31}x_1^{(m+1)} - a_{32}x_2^{(m+1)})
+\end{align}</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">19.3</span><span class="p">,</span> <span class="mf">71.4</span><span class="p">])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">error</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">GaussSeidel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="n">xOld</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]))</span><span class="o">/</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xOld</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">e</span>
+
+<span class="k">def</span> <span class="nf">printGaussSeidel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">xval</span><span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">GaussSeidel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">1</span><span class="p">])):</span>
+        <span class="n">xval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GaussSeidel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">xval</span>
+
+<span class="n">printGaussSeidel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2.056475238095238, -2.4854211178176873, 7.02833344584854]
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -347,6 +556,7 @@ Eq.(\eqref{eq2c})\leftarrow Eq.(\eqref{eq2c}) - (-0.5) \times Eq.(\eqref{eq2b})
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -361,8 +571,17 @@ Eq.(\eqref{eq2c})\leftarrow Eq.(\eqref{eq2c}) - (-0.5) \times Eq.(\eqref{eq2b})
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Solution of Linear system of equations</a><ul>
+<li><a class="reference internal" href="#">Computer Lab - Semester 3</a><ul>
+<li><a class="reference internal" href="#Solution-of-Linear-system-of-equations">Solution of Linear system of equations</a><ul>
 <li><a class="reference internal" href="#Gauss-elimination-method">Gauss elimination method</a></li>
+<li><a class="reference internal" href="#Algorithim-of-Gauss-Elimination-Method">Algorithim of Gauss Elimination Method</a><ul>
+<li><a class="reference internal" href="#Elimination-phase">Elimination phase</a></li>
+<li><a class="reference internal" href="#Back-substitution">Back substitution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Gauss-Siedel-Method-(Iterative-method)">Gauss Siedel Method (Iterative method)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -407,7 +626,7 @@ Eq.(\eqref{eq2c})\leftarrow Eq.(\eqref{eq2c}) - (-0.5) \times Eq.(\eqref{eq2b})
           <a href="sem1%281%29.html" title="Computer Lab - Semester 1"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Computer Lab  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Solution of Linear system of equations</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Computer Lab - Semester 3</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
