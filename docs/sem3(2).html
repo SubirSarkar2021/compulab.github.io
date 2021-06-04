@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solution of ODE &#8212; Computer Lab  documentation</title>
+    <title>Computer Lab - Semester 3 &#8212; Computer Lab  documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
@@ -35,7 +35,7 @@
           <a href="sem3%281%29.html" title="Computer Lab - Semester 3"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Computer Lab  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Solution of ODE</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Computer Lab - Semester 3</a></li> 
       </ul>
     </div>  
 
@@ -292,11 +292,12 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Computer-Lab---Semester-3">
+<h1>Computer Lab - Semester 3<a class="headerlink" href="#Computer-Lab---Semester-3" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Solution-of-ODE">
-<h1>Solution of ODE<a class="headerlink" href="#Solution-of-ODE" title="Permalink to this headline">¶</a></h1>
-</div>
+<h2>Solution of ODE<a class="headerlink" href="#Solution-of-ODE" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Euler’s-Method">
-<h1>Euler’s Method<a class="headerlink" href="#Euler’s-Method" title="Permalink to this headline">¶</a></h1>
+<h3>Euler’s Method<a class="headerlink" href="#Euler’s-Method" title="Permalink to this headline">¶</a></h3>
 <p>Any equation which involves derivative of a function is called a <strong>differential equation</strong>. Order of the differential equation is defined by the order of the derivative of the function present in the differential equation. A first order linear differential equation is represented by</p>
 <p><span class="math">\begin{equation}
 \frac{dy}{dx}=f(x,y(x))
@@ -446,11 +447,12 @@ x         y
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sem3(2)_3_1.png" src="_images/sem3(2)_3_1.png" />
+<img alt="_images/sem3(2)_4_1.png" src="_images/sem3(2)_4_1.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Modified-Euler-method">
-<h2>Modified Euler method<a class="headerlink" href="#Modified-Euler-method" title="Permalink to this headline">¶</a></h2>
+<h3>Modified Euler method<a class="headerlink" href="#Modified-Euler-method" title="Permalink to this headline">¶</a></h3>
 <p>The biggest shortcoming in Euler’s method is that the derivative or slope estimated at the begining of the interval is applied through out the interval which generally, is not the case. As a modification, the derivative is estimated at the begining and at the end of the interval and average of the two values is used to estimate the value at the next stage. So, if we consider an interval between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x+h\)</span> and the value of <span class="math notranslate nohighlight">\(y(x)\)</span> is known, then to estimate the value at
 <span class="math notranslate nohighlight">\(x+h\)</span>, we calculate the slope at <span class="math notranslate nohighlight">\(x\)</span>, which is <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span> and estimate <span class="math notranslate nohighlight">\(y(x+h)\)</span> which is given by</p>
 <p><span class="math">\begin{align}
@@ -483,7 +485,7 @@ y(x+h) = y(x) + \left( \frac{k_1+k_2}{2}\right) \cdot h
 </div>
 </div>
 <div class="section" id="Runge-Kutta-Method-of-Second-Order">
-<h2>Runge Kutta Method of Second Order<a class="headerlink" href="#Runge-Kutta-Method-of-Second-Order" title="Permalink to this headline">¶</a></h2>
+<h3>Runge Kutta Method of Second Order<a class="headerlink" href="#Runge-Kutta-Method-of-Second-Order" title="Permalink to this headline">¶</a></h3>
 <p>In this method. we estimate the slope at the middle of the interval <span class="math notranslate nohighlight">\((x, x+h)\)</span>. Let <span class="math notranslate nohighlight">\(f(x, y)\)</span> be the slope at <span class="math notranslate nohighlight">\(x\)</span> and the slope at <span class="math notranslate nohighlight">\(x+h/2\)</span> be <span class="math notranslate nohighlight">\(f(x+h/2, y+k1/2)\)</span>. Considering this slope is better estimate for the interval, we use it for the whole interval to estimate the value at <span class="math notranslate nohighlight">\(x+h\)</span>. This can be shown below - <span class="math">\begin{align}
 &k_1 = f(x,y) \nonumber\\
 &k_2 = (x+\frac{h}{2}, y + \frac{h}{2}k_1)\nonumber\\
@@ -555,6 +557,7 @@ t         y
 </div>
 </div>
 </div>
+</div>
 
 
             <div class="clearer"></div>
@@ -565,10 +568,13 @@ t         y
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Solution of ODE</a></li>
-<li><a class="reference internal" href="#Euler’s-Method">Euler’s Method</a><ul>
+<li><a class="reference internal" href="#">Computer Lab - Semester 3</a><ul>
+<li><a class="reference internal" href="#Solution-of-ODE">Solution of ODE</a><ul>
+<li><a class="reference internal" href="#Euler’s-Method">Euler’s Method</a></li>
 <li><a class="reference internal" href="#Modified-Euler-method">Modified Euler method</a></li>
 <li><a class="reference internal" href="#Runge-Kutta-Method-of-Second-Order">Runge Kutta Method of Second Order</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -613,7 +619,7 @@ t         y
           <a href="sem3%281%29.html" title="Computer Lab - Semester 3"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Computer Lab  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Solution of ODE</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Computer Lab - Semester 3</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

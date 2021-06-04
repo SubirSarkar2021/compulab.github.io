@@ -2,7 +2,15 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "586bb423",
+   "id": "ae6260c9",
+   "metadata": {},
+   "source": [
+    "# Computer Lab - Semester 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c3bc623d",
    "metadata": {},
    "source": [
     "## Solution of ODE"
@@ -10,10 +18,10 @@
   },
   {
    "cell_type": "markdown",
-   "id": "7dd9a9b8",
+   "id": "4acae2d3",
    "metadata": {},
    "source": [
-    "## Euler's Method\n",
+    "#### Euler's Method\n",
     "\n",
     "Any equation which involves derivative of a function is called a **differential equation**. Order of the differential equation is defined by the order of the derivative of the function present in the differential equation. A first order linear differential equation is represented by\n",
     "\n",
@@ -74,7 +82,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "403931ee",
+   "id": "bc1d6a9a",
    "metadata": {},
    "source": [
     "Consider the following ODE\n",
@@ -87,7 +95,7 @@
   {
    "cell_type": "code",
    "execution_count": 42,
-   "id": "b70692ea",
+   "id": "c7a0c289",
    "metadata": {},
    "outputs": [
     {
@@ -169,7 +177,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2890c750",
+   "id": "5e4066ec",
    "metadata": {},
    "source": [
     "#### Modified Euler method\n",
@@ -201,7 +209,7 @@
   {
    "cell_type": "code",
    "execution_count": 45,
-   "id": "b9044cb0",
+   "id": "350d43f7",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -215,7 +223,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5f11ace3",
+   "id": "e78b75cd",
    "metadata": {},
    "source": [
     "#### Runge Kutta Method of Second Order\n",
@@ -230,7 +238,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2320f7c9",
+   "id": "176b20d9",
    "metadata": {},
    "source": [
     "Solve the differential equation\n",
@@ -244,7 +252,7 @@
   {
    "cell_type": "code",
    "execution_count": 51,
-   "id": "8d8e5c71",
+   "id": "312f07a0",
    "metadata": {},
    "outputs": [
     {
@@ -296,7 +304,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "003aba57",
+   "id": "8433aeb2",
    "metadata": {},
    "outputs": [],
    "source": []
