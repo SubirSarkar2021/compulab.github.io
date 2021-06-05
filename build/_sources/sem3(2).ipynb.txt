@@ -438,7 +438,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5f90ddbe",
+   "id": "d477ae6a",
    "metadata": {},
    "source": [
     "## First order Differential equations"
@@ -446,7 +446,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "1cdca57b",
+   "id": "4d6ab7de",
    "metadata": {},
    "source": [
     "#### Radioactive Decay\n",
@@ -469,7 +469,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "033e90c7",
+   "id": "643dbe62",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -496,7 +496,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "2eda8363",
+   "id": "c6280fad",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -518,7 +518,7 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "9e55c14a",
+   "id": "11f79424",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -532,7 +532,7 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "676ce922",
+   "id": "522c69e2",
    "metadata": {},
    "outputs": [
     {
@@ -560,7 +560,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a818d02a",
+   "id": "dfb99afb",
    "metadata": {},
    "source": [
     "Simulation done by Euler method and RK2 method gives identical result."
@@ -568,7 +568,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d9424ddb",
+   "id": "5495e7f6",
    "metadata": {},
    "source": [
     "We can solve the problem by taking the help of functions from Scipy. There are two functions - one is `odeint` which solves ordinary differential equation with appropriate initial conditions and the other one is `solve_ivp` which is for solving *initial value problem*."
@@ -577,7 +577,7 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "id": "621fbf01",
+   "id": "25ef669a",
    "metadata": {},
    "outputs": [
     {
@@ -615,7 +615,7 @@
   {
    "cell_type": "code",
    "execution_count": 15,
-   "id": "7afb205f",
+   "id": "9846876d",
    "metadata": {},
    "outputs": [
     {
@@ -655,7 +655,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "99fa86eb",
+   "id": "86e3ac15",
    "metadata": {},
    "outputs": [],
    "source": []
