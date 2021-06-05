@@ -374,7 +374,7 @@ y_{\text{new}} = y +h \cdot f(x,y)
 \frac{dy}{dx}=\frac{y+x}{y-x},\hspace{0.5cm}y(0)=1
 \end{align}</span> Find the value y at x = 0.6, taking the step size = 0.2.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -470,7 +470,7 @@ y(x+h) = y(x) + \left( \frac{k_1+k_2}{2}\right) \cdot h
 <p>This value of <span class="math notranslate nohighlight">\(y(x+h)\)</span> is known as <em>corrector</em> value or <span class="math notranslate nohighlight">\(y_c\)</span>.</p>
 <p>The previous problem can be solved by modified Euler method by modifying the code in the Euler function. The code snippet is given below.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -496,7 +496,7 @@ y(x+h) = y(x) + \left( \frac{k_1+k_2}{2}\right) \cdot h
 \end{equation}</span></p>
 <p>with the initial condition <span class="math notranslate nohighlight">\(y(0)=1\)</span>, using fourth order Runge-Kutta method from <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(t=0.4\)</span> taking <span class="math notranslate nohighlight">\(h=0.1\)</span>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -546,6 +546,268 @@ t         y
 ------------------
 </pre></div></div>
 </div>
+</div>
+<div class="section" id="Runge-Kutta-Method-of-4th-Order">
+<h3>Runge Kutta Method of 4th Order<a class="headerlink" href="#Runge-Kutta-Method-of-4th-Order" title="Permalink to this headline">¶</a></h3>
+<p>4th order Runge-Kutta method is more improved version than 2nd order. In 4th order, we estimate the slope at the half of the interval. Let the slope at <span class="math notranslate nohighlight">\(x\)</span> be <span class="math notranslate nohighlight">\(f(x,y)\)</span> and we estimate the slope at <span class="math notranslate nohighlight">\(x+h/2\)</span> which is <span class="math notranslate nohighlight">\(f(x+h/2, y+k_1h/2)\)</span>. We can write it as follows -</p>
+<p><span class="math">\begin{align}
+&k_1 = f(x,y)\nonumber\\
+&k_2 = f(x+\frac{h}{2},y+\frac{h}{2}\cdot k_1)\nonumber
+\end{align}</span></p>
+<p>Assuming <span class="math notranslate nohighlight">\(k_2\)</span> to be better estimate of the slope than <span class="math notranslate nohighlight">\(k_1\)</span>, we use it to find slope at mid-point of the interval. It is given by</p>
+<p><span class="math">\begin{align}
+k_3 = f(x+\frac{h}{2},y+\frac{h}{2}\cdot k_2)\nonumber
+\end{align}</span></p>
+<p>We consider this slope <span class="math notranslate nohighlight">\(k_3\)</span> for the over all interval and find the slope at <span class="math notranslate nohighlight">\(x+h\)</span> which is given by</p>
+<p><span class="math">\begin{align}
+k_4 = f(x+h, y+h\cdot k_3)
+\end{align}</span></p>
+<p>The average of these four slopes is given by</p>
+<p><span class="math">\begin{align}
+k_{avg}=\frac{k_1+2k_2+2k_3+k_4}{6}
+\end{align}</span></p>
+<p>We use this average value of the slope to estimate <span class="math notranslate nohighlight">\(y(x+h)\)</span>. This is given by</p>
+<p><span class="math">\begin{align}
+y(x+h)=y(x)+h\cdot k_{avg}
+\end{align}</span></p>
+<p>Consider the following differential equation:</p>
+<p><span class="math">\begin{equation}
+\frac{dy}{dt}=t\sqrt{y(t)}
+\end{equation}</span> with initial condition: <span class="math notranslate nohighlight">\(t_0 = 0\)</span> and <span class="math notranslate nohighlight">\(y_0 = y(t_0)=y(0)=1\)</span></p>
+<p>The exact solution is <span class="math notranslate nohighlight">\(y(t) = \frac{1}{16}(t^2 + 4)^2\)</span></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Defining all functions</span>
+
+<span class="k">def</span> <span class="nf">y_analytic</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">rk4</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">k1</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">k2</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k_avg</span> <span class="o">=</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="n">k3</span><span class="p">)</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span>
+    <span class="n">y_new</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">k_avg</span><span class="o">*</span><span class="n">h</span>
+    <span class="k">return</span> <span class="n">y_new</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Discretizing time domain and creating array for &#39;y&#39;</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">y_analt</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_analytic</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_range</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Comapring the result graphically</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RK4 method&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">y_analt</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical method&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y(x)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem3(2)_14_0.png" src="_images/sem3(2)_14_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="First-order-Differential-equations">
+<h2>First order Differential equations<a class="headerlink" href="#First-order-Differential-equations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Radioactive-Decay">
+<h3>Radioactive Decay<a class="headerlink" href="#Radioactive-Decay" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>There are some elements in nature which spontaneously disintegrates by itself without any external interventation. Such process is called <strong>radioactivity</strong> and the elements are called <em>radioactive elements</em>.</p>
+</div></blockquote>
+<p>The rate of decay of any radioactive elements is proportional to the number of elements present at that instant. <span class="math">\begin{align}
+\frac{dN}{dt}=-\lambda N, \hspace{0.5cm}N(t_0)=N_0 \label{eq1}\tag{1}
+\end{align}</span> The constant of proportionality (<span class="math notranslate nohighlight">\(\lambda\)</span>) is called <em>decay constant</em>. <span class="math notranslate nohighlight">\(N_0\)</span> is the number of radioactive element present initially at time <span class="math notranslate nohighlight">\(t_0\)</span>. The decay constant <span class="math notranslate nohighlight">\(\lambda\)</span> can be further expressed as <span class="math">\begin{align}
+\lambda=\frac{0.693}{T_{1/2}}\label{eqref{2}}\tag{2}
+\end{align}</span> Here, <span class="math notranslate nohighlight">\(T_{1/2}\)</span> is the half-life of the radioactive element during which half of the radioactive element will decay.</p>
+<p>We like to simulate radioactivity for a known source. Hence we have to solve Equation (<span class="math">\ref{eq1}</span>) with appropriate initial condition.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># basic parametrs</span>
+<span class="n">N0</span>    <span class="o">=</span> <span class="mi">10000</span>      <span class="c1"># initial number of atoms</span>
+<span class="n">T_half</span> <span class="o">=</span> <span class="mf">4.5</span><span class="o">*</span><span class="mi">60</span>
+<span class="n">lamda</span> <span class="o">=</span> <span class="mf">0.693</span><span class="o">/</span><span class="n">T_half</span>
+
+<span class="c1"># Discretize the independent variable &#39;t&#39;</span>
+<span class="n">t_init</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">step_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_init</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">step_size</span><span class="p">)</span>
+
+<span class="c1"># Create array for dependent variable &quot;N&quot;</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">N_rk2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">N_rk4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">N0</span>
+<span class="n">N_rk2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">N0</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">lamda</span><span class="o">*</span><span class="n">N</span>
+
+<span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">k</span>     <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">N_new</span> <span class="o">=</span> <span class="n">N</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">h</span>
+    <span class="k">return</span> <span class="n">N_new</span>
+
+<span class="k">def</span> <span class="nf">rk2</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">N_new</span> <span class="o">=</span> <span class="n">N</span> <span class="o">+</span> <span class="n">k2</span><span class="o">*</span><span class="n">h</span>
+    <span class="k">return</span> <span class="n">N_new</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Loop to calculate the value of &quot;N&quot; at different &quot;t&quot; points</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">step_size</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">N_rk2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">N_rk2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Visualizing the simulation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Euler&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_rk2</span><span class="p">,</span> <span class="s1">&#39;b:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rk2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$N(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem3(2)_20_0.png" src="_images/sem3(2)_20_0.png" />
+</div>
+</div>
+<p>Simulation done by Euler method and RK2 method gives identical result.</p>
+<p>We can solve the problem by taking the help of functions from Scipy. There are two functions - one is <code class="docutils literal notranslate"><span class="pre">odeint</span></code> which solves ordinary differential equation with appropriate initial conditions and the other one is <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> which is for solving <em>initial value problem</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Solving by odeint</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">lamda</span><span class="o">*</span><span class="n">N</span>
+
+<span class="n">T_half</span> <span class="o">=</span> <span class="mf">4.5</span><span class="o">*</span><span class="mi">60</span>
+<span class="n">lamda</span> <span class="o">=</span> <span class="mf">0.693</span><span class="o">/</span><span class="n">T_half</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">N0</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">N0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;odeint&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$N(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem3(2)_23_0.png" src="_images/sem3(2)_23_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># using solve_ivp function</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">lamda</span><span class="o">*</span><span class="n">N</span>
+
+<span class="n">T_half</span> <span class="o">=</span> <span class="mf">4.5</span><span class="o">*</span><span class="mi">60</span>
+<span class="n">lamda</span> <span class="o">=</span> <span class="mf">0.693</span><span class="o">/</span><span class="n">T_half</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">N0</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="n">N0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;solve_ivp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$N(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem3(2)_24_0.png" src="_images/sem3(2)_24_0.png" />
+</div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -573,6 +835,11 @@ t         y
 <li><a class="reference internal" href="#Euler’s-Method">Euler’s Method</a></li>
 <li><a class="reference internal" href="#Modified-Euler-method">Modified Euler method</a></li>
 <li><a class="reference internal" href="#Runge-Kutta-Method-of-Second-Order">Runge Kutta Method of Second Order</a></li>
+<li><a class="reference internal" href="#Runge-Kutta-Method-of-4th-Order">Runge Kutta Method of 4th Order</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#First-order-Differential-equations">First order Differential equations</a><ul>
+<li><a class="reference internal" href="#Radioactive-Decay">Radioactive Decay</a></li>
 </ul>
 </li>
 </ul>
