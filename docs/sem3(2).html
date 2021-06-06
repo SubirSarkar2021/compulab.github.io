@@ -374,7 +374,7 @@ y_{\text{new}} = y +h \cdot f(x,y)
 \frac{dy}{dx}=\frac{y+x}{y-x},\hspace{0.5cm}y(0)=1
 \end{align}</span> Find the value y at x = 0.6, taking the step size = 0.2.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -470,7 +470,7 @@ y(x+h) = y(x) + \left( \frac{k_1+k_2}{2}\right) \cdot h
 <p>This value of <span class="math notranslate nohighlight">\(y(x+h)\)</span> is known as <em>corrector</em> value or <span class="math notranslate nohighlight">\(y_c\)</span>.</p>
 <p>The previous problem can be solved by modified Euler method by modifying the code in the Euler function. The code snippet is given below.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -496,7 +496,7 @@ y(x+h) = y(x) + \left( \frac{k_1+k_2}{2}\right) \cdot h
 \end{equation}</span></p>
 <p>with the initial condition <span class="math notranslate nohighlight">\(y(0)=1\)</span>, using fourth order Runge-Kutta method from <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(t=0.4\)</span> taking <span class="math notranslate nohighlight">\(h=0.1\)</span>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -576,7 +576,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 \end{equation}</span> with initial condition: <span class="math notranslate nohighlight">\(t_0 = 0\)</span> and <span class="math notranslate nohighlight">\(y_0 = y(t_0)=y(0)=1\)</span></p>
 <p>The exact solution is <span class="math notranslate nohighlight">\(y(t) = \frac{1}{16}(t^2 + 4)^2\)</span></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -600,7 +600,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -623,7 +623,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -661,7 +661,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 \end{align}</span> Here, <span class="math notranslate nohighlight">\(T_{1/2}\)</span> is the half-life of the radioactive element during which half of the radioactive element will decay.</p>
 <p>We like to simulate radioactivity for a known source. Hence we have to solve Equation (<span class="math">\ref{eq1}</span>) with appropriate initial condition.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -687,7 +687,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -708,7 +708,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -721,7 +721,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -745,7 +745,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 <p>Simulation done by Euler method and RK2 method gives identical result.</p>
 <p>We can solve the problem by taking the help of functions from Scipy. There are two functions - one is <code class="docutils literal notranslate"><span class="pre">odeint</span></code> which solves ordinary differential equation with appropriate initial conditions and the other one is <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> which is for solving <em>initial value problem</em>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -776,7 +776,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -806,6 +806,113 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </div>
 <div class="output_area docutils container">
 <img alt="_images/sem3(2)_24_0.png" src="_images/sem3(2)_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Newton’s-law-of-cooling">
+<h3>Newton’s law of cooling<a class="headerlink" href="#Newton’s-law-of-cooling" title="Permalink to this headline">¶</a></h3>
+<p>If a hot body is kept at ambient temperature, it will eventually loose heat. The law states that &gt;The rate of heat loss is directly proportional to the difference of temperature of the body with surrounding. Mathematically, we can represent it <span class="math">\begin{align}
+\frac{dT}{dt} = -k(T - T_0)\label{eq01}\tag{1}
+\end{align}</span></p>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the proportionality constant, <span class="math notranslate nohighlight">\(T_0\)</span> is the ambient temperature and <span class="math notranslate nohighlight">\(T\)</span> is the temperature of the body at any instant. To model Newton’s law of cooling, we have to solve the ODE with appropriate initial condition. I prefer to solve it by RK2 method which is not so sensitive to stepsize of numerical approach, but that happens to be the case incase of Euler’s method. One can verify it by taking varying stepsize.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Defing model functions</span>
+<span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">rk2</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">T</span> <span class="o">+</span> <span class="n">k1</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">T_new</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="n">k2</span><span class="o">*</span><span class="n">h</span>
+    <span class="k">return</span> <span class="n">T_new</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Discretizing time domain and creating array for Temperature</span>
+<span class="n">t_init</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">step_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_init</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">step_size</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">h</span>    <span class="o">=</span> <span class="n">step_size</span>
+<span class="n">k</span>    <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">T0</span>   <span class="o">=</span> <span class="mi">30</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Visualizing the Cooling process</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">frac</span><span class="si">{dT}{dt}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem3(2)_29_0.png" src="_images/sem3(2)_29_0.png" />
+</div>
+</div>
+<p>We can demonstrate the effect of diiferent values of <span class="math notranslate nohighlight">\(k\)</span> on cooling process. Let us take three <span class="math notranslate nohighlight">\(k\)</span> values like 0.05, 0.5, 1. Here we have to make minor modification in our functions by passing <span class="math notranslate nohighlight">\(k\)</span> value as one of the arguments.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">rk2</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">T</span> <span class="o">+</span> <span class="n">k1</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">T_new</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="n">k2</span><span class="o">*</span><span class="n">h</span>
+    <span class="k">return</span> <span class="n">T_new</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;k = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">frac</span><span class="si">{dT}{dt}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sem3(2)_31_0.png" src="_images/sem3(2)_31_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -840,6 +947,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 </li>
 <li><a class="reference internal" href="#First-order-Differential-equations">First order Differential equations</a><ul>
 <li><a class="reference internal" href="#Radioactive-Decay">Radioactive Decay</a></li>
+<li><a class="reference internal" href="#Newton’s-law-of-cooling">Newton’s law of cooling</a></li>
 </ul>
 </li>
 </ul>
