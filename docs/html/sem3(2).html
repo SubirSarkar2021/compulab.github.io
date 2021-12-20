@@ -14,6 +14,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
@@ -922,7 +923,7 @@ y(x+h)=y(x)+h\cdot k_{avg}
 <div class="section" id="During-Growth">
 <h4>During Growth<a class="headerlink" href="#During-Growth" title="Permalink to this headline">¶</a></h4>
 <p>An electrical circuit containing capacitor (C) and resistor (R) connected to a voltage source V is shown in figure. When the circuit is switched on, the capacitor is gradually charged up. Consider current at any instant <span class="math notranslate nohighlight">\(t\)</span> in the circuit is <span class="math notranslate nohighlight">\(i\)</span> and corresponding charge on the capacitor is <span class="math notranslate nohighlight">\(q\)</span>. Charge at any instant on the capacitor can be obtained by applying Kirchoff’s voltage law in the closed circuit.</p>
-<p align="center"><p><img alt="d5d8427ed4c645dd9500f7fe0ad7d541" class="no-scaled-link" src="_images/CR-circuit.png" style="width: 200px; height: 100px;" /></p>
+<p align="center"><p><img alt="6691bb6a50614d6f92ae2e7726a051c1" class="no-scaled-link" src="_images/CR-circuit.png" style="width: 200px; height: 100px;" /></p>
 </p><p><span class="math">\begin{align}
 V - iR - \frac{q}{C} = 0 \nonumber\\
 V - R\frac{dq}{dt} - \frac{q}{C} = 0\nonumber\\
@@ -1094,7 +1095,7 @@ V - R\frac{dq}{dt} - \frac{q}{C} = 0\nonumber\\
 </div>
 <div class="section" id="Current-in-LC-circuit">
 <h3>Current in LC circuit<a class="headerlink" href="#Current-in-LC-circuit" title="Permalink to this headline">¶</a></h3>
-<p align="center"><p><img alt="fa37919aead14822b49717e608fc9566" class="no-scaled-link" src="LC-ckt.png" style="width: 200px; height: 100px;" /></p>
+<p align="center"><p><img alt="a151f552d69744c1b4835656b6a11b2f" class="no-scaled-link" src="LC-ckt.png" style="width: 200px; height: 100px;" /></p>
 </p><p><span class="math">\begin{align}
 &V_L = V_C \\
 \implies &-L\frac{dI}{dt} = \frac{q}{C}\\
